@@ -1,0 +1,346 @@
+:root {
+    --primary: #0b1220;
+    --accent: #f7b733;
+    --white: #ffffff;
+    --light-bg: rgba(255, 255, 255, 0.1);
+    --transition: 0.35s ease;
+    --btn-color: #f7b733;
+    --btn-hover: #fc4a1a;
+    --bg-gradient: linear-gradient(135deg, #0b1220, #1a1a2e, #0b1220);
+}
+
+/* GENERAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* HEADER */
+.header {
+    position: relative;
+    z-index: 100;
+    background: var(--bg-gradient);
+    background-size: 200% 200%;
+    animation: bgMove 20s linear infinite;
+    overflow: hidden;
+}
+
+@keyframes bgMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* TOPBAR */
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding-top: 10px;
+}
+
+/* LOGO */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    animation: fadeInLeft 1s ease forwards;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    background: var(--btn-color);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease;
+}
+
+.logo:hover {
+    transform: scale(1.15) rotate(10deg);
+}
+
+.brand h1 {
+    color: var(--white);
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.slogan {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+/* NAVIGATION */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* NAVLINKS DESKTOP */
+.navlinks a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--white);
+}
+.navlinks a:not(.ghost){
+    position: relative;
+    padding: 6px;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+
+}
+.navlinks a:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.navlinks a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background: var(--btn-color);
+    transition: width 0.3s;
+}
+
+.navlinks a:hover::after {
+    width: 100%;
+}
+
+/* CTA Buttons */
+.cta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.ghost {
+    padding: 4px 8px;
+    margin:4px;
+    border: 1px solid var(--white);
+    border-radius: 14px;
+    color: var(--white);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.ghost:hover {
+    background: var(--light-bg);
+    transform: scale(1.05);
+}
+
+.btn {
+    padding: 5px 11px;
+    background: var(--btn-color);
+    color: var(--white);
+    border-radius: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--btn-hover);
+    transform: scale(1.08) translateY(-2px);
+}
+
+/* HAMBURGER */
+.burger-checkbox {
+    position: absolute;
+    z-index: 110;
+    visibility: hidden;
+}
+
+.burger {
+    cursor: pointer;
+    visibility: hidden;
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 26px;
+    background: transparent;
+}
+
+.burger::before,
+.burger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 10px;
+    background: #fff;
+    /* белые полоски для контраста на тёмном фоне */
+    transition: all 0.4s ease;
+}
+
+/* верхняя и нижняя полоски */
+.burger::before {
+    top: 0;
+    box-shadow: 0 11px 0 #fff;
+}
+
+.burger::after {
+    bottom: 0;
+}
+
+/* анимация при открытии */
+.burger-checkbox:checked+.burger::before {
+    top: 11px;
+    transform: rotate(45deg);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.burger-checkbox:checked+.burger::after {
+    bottom: 11px;
+    transform: rotate(-45deg);
+}
+
+/* Связь с мобильным меню */
+.burger-checkbox:checked~.mobile-nav {
+    left: 0;
+}
+.burger-checkbox:checked ~ .mobile-nav {
+  left: 0;
+}
+
+/* MOBILE NAV */
+.mobile-nav {
+    position: fixed;
+    max-width: 300px;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-gradient);
+    background-size: 200% 200%;
+    animation: bgMove 25s linear infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.5s ease;
+}
+
+.mobile-nav.open {
+    left: 0;
+}
+
+.mobile-nav a {
+    color: var(--white);
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 12px 0;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.mobile-nav a:hover {
+    transform: scale(1.05);
+    color: var(--btn-color);
+}
+
+/* ANIMATIONS */
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width:900px) {
+    .burger {
+        visibility: visible;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .topbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+        padding: 0 16px;
+    }
+
+    .brand {
+        gap: 10px;
+    }
+
+    .brand h1 {
+        font-size: 20px;
+    }
+
+    .slogan {
+        display: none;
+    }
+
+    /* CTA buttons hide on mobile topbar, move to mobile menu if нужно */
+    .cta {
+        display: none;
+    }
+
+    /* MOBILE NAV full-screen menu */
+    .mobile-nav {
+        padding-top: 100px;
+        text-align: center;
+    }
+
+    .mobile-nav a {
+        font-size: 22px;
+        margin: 18px 0;
+    }
+}
