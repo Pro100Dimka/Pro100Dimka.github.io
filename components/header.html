@@ -1,49 +1,21 @@
-<header role="banner">
+<header class="header">
     <div class="container topbar">
         <div class="brand">
-            <div class="logo" aria-hidden="true">РБ</div>
+            <div class="logo">РБ</div>
             <div>
                 <h1>Рембуд</h1>
-                <div class="slogan">Ремонтні послуги під ключ — надійно, швидко, з гарантією</div>
+                <div class="slogan">Ремонт квартир і будинків — швидко, надійно, з гарантією</div>
             </div>
         </div>
+        <nav>
+            <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+            <label class="burger" for="burger-checkbox"></label>
+            <div class="navlinks desktop-only"> </div>
+            <div class="cta desktop-only">
 
-        <!-- NAV -->
-        <nav aria-label="Головна навігація">
-            <button class="hamburger" aria-label="Відкрити меню" aria-expanded="false" onclick="toggleMobileNav(this)">
-                <!-- simple hamburger -->
-                <svg width="28" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M3 6h18M3 12h18M3 18h18" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg>
-            </button>
-
-            <div class="navlinks desktop-only" id="navlinks">
-                <a href="#home">Головна</a>
-                <a href="#about">Про нас</a>
-                <a href="#services">Послуги</a>
-                <a href="#portfolio">Портфоліо</a>
-                <a href="#reviews">Відгуки</a>
-                <a href="#contacts">Контакти</a>
             </div>
+            <div class="navlinks mobile-nav">
 
-            <div class="cta">
-                <a class="ghost" href="tel:+380XXXXXXXXX" aria-label="Подзвонити">+380 XX XXX XXXX</a>
-                <button class="btn" onclick="openModal('orderModal')">Викликати майстра</button>
             </div>
         </nav>
-    </div>
-
-    <!-- MOBILE NAV (slides down) -->
-    <div id="mobileNav"
-        style="display:none;padding:10px 16px;border-top:1px solid rgba(16,24,32,0.03);background:rgba(255,255,255,0.98)">
-        <div class="container" style="display:flex;flex-direction:column;gap:8px">
-            <a href="#home" onclick="closeMobileNav()">Головна</a>
-            <a href="#about" onclick="closeMobileNav()">Про нас</a>
-            <a href="#services" onclick="closeMobileNav()">Послуги</a>
-            <a href="#portfolio" onclick="closeMobileNav()">Портфоліо</a>
-            <a href="#reviews" onclick="closeMobileNav()">Відгуки</a>
-            <a href="#contacts" onclick="closeMobileNav()">Контакти</a>
-        </div>
-    </div>
 </header>
