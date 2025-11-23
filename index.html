@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="uk">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description"
+        content="Ремонтні послуги: демонтаж, електрика, сантехніка, плитка, ламінат, фарбування, стяжка, міжкімнатні двері. Швидко, якісно, з гарантією." />
+    <meta name="keywords"
+        content="ремонт, електрика, сантехніка, плитка, ламінат, стяжка, фарбування, ремонт квартир, косметичний ремонт" />
+    <title>Рембуд — ремонтні послуги під ключ</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <!-- Structured data (LocalBusiness) -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Рембуд",
+    "description": "Ремонтні послуги: демонтаж, електрика, сантехніка, плитка, ламінат, фарбування, стяжка, міжкімнатні двері.",
+    "telephone": "+380-XX-XXX-XXXX",
+    "areaServed": "Ukraine",
+    "url": "",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ваше місто"
+    }
+  }
+  </script>
+</head>
+
+<body>
+    <div id="header"></div>
+    <main id="home" class="container">
+        <div id="hero"></div>
+        <div id="about"></div>
+        <div id="services"></div>
+        <div id="portfolio"></div>
+        <div id="reviews"></div>
+        <div id="contacts"></div>
+    </main>
+    <div id="footer"></div>
+    <div id="modals"></div>
+    <script>
+        async function loadComponent(id, file) {
+            document.getElementById(id).innerHTML = await (await fetch(`components/${file}`)).text();
+        }
+        const components = ['header', 'hero', 'about', 'services', 'portfolio', 'reviews', 'contacts', 'footer', 'modals']
+        components.forEach(c => loadComponent(c, `${c}.html`))
+    </script>
+    <script src="./src/script.js"></script>
+
+</body>
+
+</html>
