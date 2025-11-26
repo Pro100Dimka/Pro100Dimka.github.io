@@ -9,8 +9,9 @@
     <meta name="keywords"
         content="ремонт, електрика, сантехніка, плитка, ламінат, стяжка, фарбування, ремонт квартир, косметичний ремонт" />
     <title>Рембуд — ремонтні послуги під ключ</title>
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/hero.css">
     <!-- Structured data (LocalBusiness) -->
     <script type="application/ld+json">
   {
@@ -31,8 +32,8 @@
 
 <body>
     <div id="header"></div>
+    <div id="hero"></div>
     <main id="home" class="container">
-        <div id="hero"></div>
         <div id="about"></div>
         <div id="services"></div>
         <div id="portfolio"></div>
@@ -45,7 +46,7 @@
         async function loadComponent(id, file) {
             document.getElementById(id).innerHTML = await (await fetch(`components/${file}`)).text();
         }
-        const components = ['header', /*'hero', 'about', 'services', 'portfolio', 'reviews', 'contacts', 'footer', 'modals'*/]
+        const components = ['header', 'hero'/*, 'about', 'services', 'portfolio', 'reviews', 'contacts', 'footer', */, 'modals']
         components.forEach(c => loadComponent(c, `${c}.html`))
     </script>
     <script src="./src/script.js"></script>

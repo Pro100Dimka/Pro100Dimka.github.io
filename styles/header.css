@@ -1,21 +1,4 @@
-:root {
-    --primary: #0b1220;
-    --accent: #f7b733;
-    --white: #ffffff;
-    --light-bg: rgba(255, 255, 255, 0.1);
-    --transition: 0.35s ease;
-    --btn-color: #f7b733;
-    --btn-hover: #fc4a1a;
-    --bg-gradient: linear-gradient(135deg, #0b1220, #1a1a2e, #0b1220);
-}
 
-/* GENERAL RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
 
 /* HEADER */
 .header {
@@ -23,11 +6,17 @@
     z-index: 100;
     background: var(--bg-gradient);
     background-size: 200% 200%;
-    animation: bgMove 20s linear infinite;
+    animation: header-bgMove 20s linear infinite;
     overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+
 }
 
-@keyframes bgMove {
+@keyframes header-bgMove {
     0% {
         background-position: 0% 50%;
     }
@@ -45,15 +34,14 @@
 .container {
     max-width: 90%;
     margin: 0 auto;
-    padding: 0 20px;
+    /* padding: 0 20px; */
 }
 
 .topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
-    padding-top: 10px;
+    padding: 0.5rem 0;
 }
 
 /* LOGO */
@@ -65,8 +53,8 @@
 }
 
 .logo {
-    width: 60px;
-    height: 60px;
+    width: 3rem;
+    height: 3rem;
     background: var(--btn-color);
     color: var(--white);
     font-weight: 800;
@@ -85,20 +73,20 @@
 
 .brand h1 {
     color: var(--white);
-    font-size: 28px;
+        font-size: 1.2rem;
     font-weight: 800;
 }
 
 .slogan {
     color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
+       font-size: 0.8rem;
 }
 
 /* NAVIGATION */
 nav {
     display: flex;
     align-items: center;
-    gap: 25px;
+    /* gap: 25px; */
 }
 
 /* NAVLINKS DESKTOP */
@@ -243,7 +231,7 @@ nav {
     height: 100%;
     background: var(--bg-gradient);
     background-size: 200% 200%;
-    animation: bgMove 25s linear infinite;
+    animation: header-bgMove 25s linear infinite;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -293,9 +281,20 @@ nav {
         transform: translateY(0);
     }
 }
-
+  @media(min-width:880px) {
+      .navlinks {
+          display: flex;
+          gap: 10px;
+          align-items: center
+      }
+         .navlinks a{
+        font-size: 12px;
+       }
+  }
 /* RESPONSIVE */
 @media (max-width:900px) {
+        
+
     .burger {
         visibility: visible;
     }
@@ -313,7 +312,7 @@ nav {
         justify-content: space-between;
         align-items: center;
         height: 70px;
-        padding: 0 16px;
+        /* padding: 0 16px; */
     }
 
     .brand {
