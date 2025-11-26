@@ -36,9 +36,9 @@ const mobileMenuToggle = () =>
   });
 
 document.addEventListener("DOMContentLoaded", () => {
+  const burgerCheckbox = document.getElementById("burger-checkbox");
   setTimeout(() => {
     renderNavLinks();
     mobileMenuToggle();
   }, 100); // рендерим ссылки навигации после загрузки DOM
-  const burgerCheckbox = document.getElementById("burger-checkbox");
 });

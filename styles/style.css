@@ -2,21 +2,27 @@
      RESET / MOBILE-FIRST BASE
      ======================== */
   :root {
-      --accent: #c89b3c;
-      /* золотисто-кирпичный */
-      --primary: #1d1f23;
-      --light-bg: #f5f1eb;
-      /* бежевый */
-      --white: #ffffff;
+ 
       --dark: #0e1821;
       --muted: #6b7280;
       --bg: #ffffff;
       --card: #fbfdff;
       --radius: 12px;
+       --primary: #0b1220;
+    --accent: #f7b733;
+    --white: #ffffff;
+    --light-bg: rgba(255, 255, 255, 0.1);
+    --transition: 0.35s ease;
+    --btn-color: #f7b733;
+    --btn-hover: #fc4a1a;
+    --bg-gradient: linear-gradient(135deg, #0b1220, #1a1a2e, #0b1220);
   }
 
   * {
-      box-sizing: border-box
+      margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   }
 
   html,
@@ -25,8 +31,6 @@
   }
 
   body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
       color: var(--dark);
       -webkit-font-smoothing: antialiased;
@@ -46,150 +50,8 @@
       display: block
   }
 
-  /* ========================
- LAYOUT
- ======================== */
-  header {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid rgba(16, 24, 32, 0.05);
-  }
-
-  .container {
-      max-width: 90%;
-      margin: 0 auto;
-      padding: 0 16px;
-  }
-
-  .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-  }
-
-  .brand {
-      display: flex;
-      gap: 12px;
-      align-items: center
-  }
-
-  .logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), #2dd4bf);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 18px;
-      box-shadow: 0 6px 18px rgba(31, 142, 241, 0.12);
-  }
-
-  .brand h1 {
-      margin: 0;
-      font-size: 18px
-  }
-
-  .slogan {
-      font-size: 12px;
-      color: var(--muted)
-  }
-
-  /* NAV */
-  nav {
-      display: flex;
-      gap: 18px;
-      align-items: center
-  }
-
-  .navlinks {
-      display: none;
-  }
-
-  /* mobile-first - desktop will show later */
-  .cta {
-      display: flex;
-      gap: 8px;
-      align-items: center
-  }
-
-  .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 10px;
-      border: 0;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 14px;
-      box-shadow: 0 8px 18px rgba(31, 142, 241, 0.12);
-  }
-
-  .ghost {
-      background: transparent;
-      color: var(--accent);
-      border: 1px solid rgba(31, 142, 241, 0.12)
-  }
-
   /* HERO */
-  .hero {
-      padding: 28px 0 18px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-      align-items: center;
-  }
 
-  .hero-card {
-      background: var(--card);
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 8px 30px rgba(12, 18, 24, 0.05)
-  }
-
-  .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px
-  }
-
-  .services-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap
-  }
-
-  .service {
-      flex: 1 1 calc(50% - 12px);
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      padding: 10px;
-      border-radius: 10px;
-      background: linear-gradient(180deg, #fff, #f6fbff);
-      border: 1px solid rgba(16, 24, 32, 0.03)
-  }
-
-  .ico {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: rgba(31, 142, 241, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: var(--accent)
-  }
 
   /* Advantages */
   .advantages {
@@ -344,11 +206,7 @@
 
   /* MEDIA QUERIES (desktop breakpoint) */
   @media(min-width:880px) {
-      .navlinks {
-          display: flex;
-          gap: 18px;
-          align-items: center
-      }
+    
 
       .hero {
           grid-template-columns: 1fr 420px
@@ -362,9 +220,10 @@
           flex: 1 1 calc(33.333% - 12px)
       }
 
-      .desktop-only {
+      /* .desktop-only {
           display: block
-      }
+      } */
+ 
 
       .hamburger {
           display: none
