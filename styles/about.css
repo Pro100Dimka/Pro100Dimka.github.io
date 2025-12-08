@@ -7,7 +7,7 @@
     position: relative;
     z-index: 4;
     text-align: center;
-
+overflow: hidden;
     /* ФОН */
     background: linear-gradient(270deg, #0b1220, #1a1a2e, #0b1220, #1a1a2e);
     background-size: 400% 400%;
