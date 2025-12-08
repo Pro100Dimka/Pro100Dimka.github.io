@@ -1,22 +1,70 @@
+.flex {
+    display: flex;
+}
 
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
 
-/* HEADER */
+.flex-between {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.rounded {
+    border-radius: 14px;
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.transition {
+    transition: all .3s ease;
+}
+
+.click-scale:hover {
+    transform: scale(1.05);
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+            rgba(247, 183, 51, 0.15),
+            rgba(0, 0, 0, 0.6));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 40;
+    /* меньше, чем у mobile-nav (50) */
+    pointer-events: none;
+    /* чтобы не мешала кликам, когда скрыта */
+}
+
 .header {
-    position: relative;
-    z-index: 100;
-    background: var(--bg-gradient);
-    background-size: 200% 200%;
-    animation: header-bgMove 20s linear infinite;
-    overflow: hidden;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 200;
-
+    overflow: hidden;
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(270deg, #0b1220, #1a1a2e, #0b1220, #1a1a2e);
+    background-size: 800% 800%;
+    animation: gradientShift 10s ease infinite;
 }
 
-@keyframes header-bgMove {
+/* Перелив градиента */
+@keyframes gradientShift {
     0% {
         background-position: 0% 50%;
     }
@@ -30,24 +78,34 @@
     }
 }
 
-/* TOPBAR */
-.container {
-    max-width: 90%;
-    margin: 0 auto;
-    /* padding: 0 20px; */
+/* Волнистая маска (эффект жидкости) */
+.header::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 500%;
+    top: 0;
+    left: -50%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1), transparent 70%);
+    animation: wave 10s infinite linear;
+    pointer-events: none;
 }
 
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0;
+@keyframes wave {
+    0% {
+        transform: rotate(0deg) translateX(0);
+    }
+
+    50% {
+        transform: rotate(20deg) translateX(30px);
+    }
+
+    100% {
+        transform: rotate(0deg) translateX(0);
+    }
 }
 
-/* LOGO */
 .brand {
-    display: flex;
-    align-items: center;
     gap: 14px;
     animation: fadeInLeft 1s ease forwards;
 }
@@ -59,12 +117,59 @@
     color: var(--white);
     font-weight: 800;
     font-size: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .3);
+    transition: transform .4s ease;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.4s ease;
+    background: linear-gradient(45deg, var(--primary), var(--btn-color), var(--primary));
+    background-size: 400% 400%;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, background-position 0.5s ease;
+    animation: logoGradient 6s ease infinite;
+    cursor: pointer;
+
+}
+
+.logo::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 40%;
+    animation: logoWave 4s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes logoGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes logoWave {
+    0% {
+        transform: rotate(0deg) translateX(0);
+    }
+
+    50% {
+        transform: rotate(20deg) translateX(20px);
+    }
+
+    100% {
+        transform: rotate(0deg) translateX(0);
+    }
 }
 
 .logo:hover {
@@ -72,72 +177,70 @@
 }
 
 .brand h1 {
-    color: var(--white);
-        font-size: 1.2rem;
-    font-weight: 800;
+    font-size: 1.2rem;
 }
 
 .slogan {
-    color: rgba(255, 255, 255, 0.8);
-       font-size: 0.8rem;
+    opacity: .8;
+    font-size: .8rem;
+    color: rgba(255, 255, 255, .8);
 }
 
-/* NAVIGATION */
-nav {
-    display: flex;
-    align-items: center;
-    /* gap: 25px; */
-}
-
-/* NAVLINKS DESKTOP */
-.navlinks a {
+.navlinks a,
+.mobile-nav a {
     text-decoration: none;
     font-weight: 600;
-    font-size: 16px;
     color: var(--white);
-}
-.navlinks a:not(.ghost){
+    padding: 2px;
     position: relative;
-    padding: 6px;
-    display: inline-block;
-    transition: transform 0.3s ease, color 0.3s ease;
+    transition: transform .3s ease, color .3s ease;
+    font-size: .9rem;
 
 }
-.navlinks a:hover {
-    transform: translateY(-5px) scale(1.05);
+
+
+.navlinks {
+    gap: 10px;
+    animation: fadeInTop 1s ease forwards;
 }
 
-.navlinks a::after {
+.navlinks a:not(.ghost)::after {
     content: "";
     position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: -3px;
     left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
     background: var(--btn-color);
-    transition: width 0.3s;
+    transition: width .3s;
 }
+
+.navlinks a:not(.ghost):hover,
+.mobile-nav a:not(.ghost):hover {
+    transform: translateY(-5px) scale(1.1);
+    /* существующий эффект */
+    animation: hoverPulse 0.6s ease forwards;
+}
+
+
 
 .navlinks a:hover::after {
     width: 100%;
 }
 
-/* CTA Buttons */
-.cta {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+.ghost,
+.btn {
+    animation: fadeInRight 1s ease forwards;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 .ghost {
-    padding: 4px 8px;
-    margin:4px;
     border: 1px solid var(--white);
+    padding: 5px 11px;
     border-radius: 14px;
+    font-weight: 700;
     color: var(--white);
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
 }
 
 .ghost:hover {
@@ -151,9 +254,7 @@ nav {
     color: var(--white);
     border-radius: 16px;
     font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
 }
 
 .btn:hover {
@@ -161,37 +262,32 @@ nav {
     transform: scale(1.08) translateY(-2px);
 }
 
-/* HAMBURGER */
+/* ==== BURGER ==== */
 .burger-checkbox {
     position: absolute;
-    z-index: 110;
     visibility: hidden;
 }
 
 .burger {
-    cursor: pointer;
-    visibility: hidden;
-    display: block;
-    position: relative;
     width: 40px;
     height: 26px;
-    background: transparent;
+    visibility: hidden;
+    cursor: pointer;
+    position: relative;
 }
 
 .burger::before,
 .burger::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     width: 100%;
     height: 4px;
     border-radius: 10px;
     background: #fff;
-    /* белые полоски для контраста на тёмном фоне */
-    transition: all 0.4s ease;
+    transition: .4s;
 }
 
-/* верхняя и нижняя полоски */
 .burger::before {
     top: 0;
     box-shadow: 0 11px 0 #fff;
@@ -201,11 +297,10 @@ nav {
     bottom: 0;
 }
 
-/* анимация при открытии */
 .burger-checkbox:checked+.burger::before {
     top: 11px;
     transform: rotate(45deg);
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: none;
 }
 
 .burger-checkbox:checked+.burger::after {
@@ -213,87 +308,119 @@ nav {
     transform: rotate(-45deg);
 }
 
-/* Связь с мобильным меню */
 .burger-checkbox:checked~.mobile-nav {
     left: 0;
 }
-.burger-checkbox:checked ~ .mobile-nav {
-  left: 0;
-}
 
-/* MOBILE NAV */
 .mobile-nav {
     position: fixed;
-    max-width: 300px;
-    top: 0;
+    bottom: 0;
     left: -100%;
     width: 100%;
-    height: 100%;
-    background: var(--bg-gradient);
-    background-size: 200% 200%;
-    animation: header-bgMove 25s linear infinite;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: left 0.5s ease;
+    max-width: 300px;
+    height: calc(100% - 64px);
+    background: linear-gradient(270deg, #0b1220, #1a1a2e, #0b1220, #1a1a2e);
+    background-size: 400% 400%;
+    animation: mobileNavGradient 12s ease infinite;
+    justify-content: space-around;
+    transition: left .5s;
 }
 
-.mobile-nav.open {
-    left: 0;
+.mobile-nav::before {
+    content: "";
+    position: absolute;
+    bottom: 0%;
+    left: -50%;
+    width: 150%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(247, 183, 51, 0.15), transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(247, 183, 51, 0.1), transparent 50%);
+    animation: mobileNavWave 20s linear infinite;
+    pointer-events: none;
 }
 
 .mobile-nav a {
-    color: var(--white);
     font-size: 24px;
-    font-weight: 600;
-    text-decoration: none;
     margin: 12px 0;
-    transition: transform 0.3s, color 0.3s;
 }
 
-.mobile-nav a:hover {
-    transform: scale(1.05);
-    color: var(--btn-color);
-}
-
-/* ANIMATIONS */
-@keyframes fadeInLeft {
+@keyframes mobileNavGradient {
     0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 50% 100%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    75% {
+        background-position: 50% 0%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
         opacity: 0;
         transform: translateX(-20px);
     }
 
-    100% {
+    to {
         opacity: 1;
         transform: translateX(0);
     }
 }
 
-@keyframes fadeInUp {
-    0% {
+@keyframes fadeInTop {
+    from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(-20px);
     }
 
-    100% {
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-  @media(min-width:880px) {
-      .navlinks {
-          display: flex;
-          gap: 10px;
-          align-items: center
-      }
-         .navlinks a{
-        font-size: 12px;
-       }
-  }
-/* RESPONSIVE */
-@media (max-width:900px) {
-        
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 1920px) {
+    .navlinks {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .navlinks a:not(.ghost) {
+        font-size: 1.1rem;
+        padding: 2px 5px;
+    }
+}
+
+@media (max-width: 900px) {
+    .header::before {
+        z-index: 10;
+        height: 100%;
+        top: 0;
+    }
 
     .burger {
         visibility: visible;
@@ -303,43 +430,35 @@ nav {
         display: none;
     }
 
-    .hamburger {
-        display: flex;
-    }
-
     .topbar {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
         height: 70px;
-        /* padding: 0 16px; */
     }
 
     .brand {
-        gap: 10px;
+        gap: 15px;
+        z-index: 10;
     }
 
     .brand h1 {
         font-size: 20px;
     }
 
+    .slogan-desctop {
+        display: none;
+    }
+
     .slogan {
-        display: none;
-    }
-
-    /* CTA buttons hide on mobile topbar, move to mobile menu if нужно */
-    .cta {
-        display: none;
-    }
-
-    /* MOBILE NAV full-screen menu */
-    .mobile-nav {
-        padding-top: 100px;
+        font-size: 1.3rem;
+        width: 85%;
         text-align: center;
+        margin: 0 auto;
+    }
+
+    .btn {
+        font-size: 22px;
     }
 
     .mobile-nav a {
-        font-size: 22px;
-        margin: 18px 0;
+        margin: 0;
     }
 }

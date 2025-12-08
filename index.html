@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/hero.css">
+    <link rel="stylesheet" href="./styles/about.css">
     <!-- Structured data (LocalBusiness) -->
     <script type="application/ld+json">
   {
@@ -32,6 +33,7 @@
 
 <body>
     <div id="header"></div>
+    <div id="overlay"></div>
     <div id="hero"></div>
     <main id="home" class="container">
         <div id="about"></div>
@@ -46,7 +48,7 @@
         async function loadComponent(id, file) {
             document.getElementById(id).innerHTML = await (await fetch(`components/${file}`)).text();
         }
-        const components = ['header', 'hero'/*, 'about', 'services', 'portfolio', 'reviews', 'contacts', 'footer', */, 'modals']
+        const components = ['header', 'hero', 'about'/*, 'services', 'portfolio', 'reviews', 'contacts', 'footer', */, 'modals']
         components.forEach(c => loadComponent(c, `${c}.html`))
     </script>
     <script src="./src/script.js"></script>

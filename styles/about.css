@@ -1,0 +1,106 @@
+/* ========================= */
+/*        ABOUT SECTION      */
+/* ========================= */
+
+#about {
+    padding: 0 20px;
+    position: relative;
+    z-index: 4;
+    text-align: center;
+overflow: hidden;
+    /* ФОН */
+    background: linear-gradient(270deg, #0b1220, #1a1a2e, #0b1220, #1a1a2e);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+    color: var(--white);
+}
+
+/* Лёгкая прозрачная подложка как в hero */
+#about::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1), transparent 70%);
+    animation: wave 10s infinite linear;
+}
+
+#about > * {
+    position: relative;
+    z-index: 2;
+}
+
+#about h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--white);
+    letter-spacing: -0.5px;
+}
+
+#about .lead {
+    max-width: 750px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.75);
+}
+
+/* GRID */
+#about .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    #about .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* CARDS */
+.hero-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+    padding: 28px 30px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.hero-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.hero-card h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.hero-card p,
+.hero-card li {
+    color: rgba(255,255,255,0.85);
+}
+
+/* Fade animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
