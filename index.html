@@ -9,51 +9,276 @@
     <meta name="keywords"
         content="ремонт, електрика, сантехніка, плитка, ламінат, стяжка, фарбування, ремонт квартир, косметичний ремонт" />
     <title>Рембуд — ремонтні послуги під ключ</title>
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/header.css">
-    <link rel="stylesheet" href="./styles/hero.css">
-    <link rel="stylesheet" href="./styles/about.css">
-    <!-- Structured data (LocalBusiness) -->
+    <link rel="stylesheet" href="./styles/style.css" />
     <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    "name": "Рембуд",
-    "description": "Ремонтні послуги: демонтаж, електрика, сантехніка, плитка, ламінат, фарбування, стяжка, міжкімнатні двері.",
-    "telephone": "+380-XX-XXX-XXXX",
-    "areaServed": "Ukraine",
-    "url": "",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Ваше місто"
-    }
-  }
-  </script>
+      {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Рембуд",
+        "description": "Ремонтні послуги: демонтаж, електрика, сантехніка, плитка, ламінат, фарбування, стяжка, міжкімнатні двері.",
+        "telephone": "+380-XX-XXX-XXXX",
+        "areaServed": "Ukraine",
+        "url": "",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ваше місто"
+        }
+      }
+    </script>
 </head>
 
 <body>
-    <div id="header"></div>
     <div id="overlay"></div>
-    <div id="hero"></div>
-    <main id="home" class="container">
-        <div id="about"></div>
-        <div id="services"></div>
-        <div id="portfolio"></div>
-        <div id="reviews"></div>
-        <div id="contacts"></div>
+    <header class="header flex flex-center">
+        <div class="header-nav flex flex-between flex-center">
+            <div class="brand flex flex-center fadeInLeft">
+                <div class="logo flex flex-center rounded">РБ</div>
+                <div>
+                    <h1 class="text-white fw-800 fs-14">Рембуд</h1>
+                    <div class="slogan-desktop slogan">
+                        Ремонт квартир і будинків — швидко, надійно, з гарантією
+                    </div>
+                </div>
+            </div>
+            <nav class="flex flex-center">
+                <input type="checkbox" id="burger-checkbox" class="burger-checkbox" />
+                <label class="burger" for="burger-checkbox"></label>
+                <div class="navlinks desktop-only flex flex-center fadeInTop"></div>
+                <div class="cta desktop-only flex flex-center fadeInRight"></div>
+                <div class="navlinks mobile-nav flex flex-col flex-center">
+                    <p class="slogan">
+                        Ремонт квартир і будинків — швидко, надійно, з гарантією
+                    </p>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main id="home" class="flex flex-col flex-center">
+        <section class="hero flex flex-center">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-main flex">
+                <div class="hero-content flex flex-col flex-center">
+                    <h1 class="hero-title">
+                        Рембуд — <span>преміальний ремонт</span> квартир та будинків
+                    </h1>
+                    <p class="hero-subtitle">
+                        Електрика, сантехніка, плитка, демонтаж, стяжка, фарбування, двері
+                        — швидко, надійно та з письмовою гарантією.
+                    </p>
+                    <div class="hero-actions flex flex-center">
+                        <button class="btn big" onclick="openModal('orderModal')">
+                            Викликати майстра
+                        </button>
+                        <button class="ghost big" onclick="openModal('priceModal')">
+                            Отримати розрахунок
+                        </button>
+                    </div>
+                    <div class="hero-features flex flex-center">
+                        <div class="hf">
+                            <span class="icon">✔</span>
+                            Гарантія на всі роботи
+                        </div>
+                        <div class="hf">
+                            <span class="icon">✔</span>
+                            Дотримуємося термінів
+                        </div>
+                        <div class="hf">
+                            <span class="icon">✔</span>
+                            Прямі майстри, без посередників
+                        </div>
+                    </div>
+                </div>
+                <div id="hero-services" class="flex"></div>
+            </div>
+        </section>
+        <section id="about" class="flex flex-col flex-center">
+            <h2>Про нас</h2>
+            <p class="slogan about-text">
+                Команда професійних майстрів з досвідом — від косметичних ремонтів до
+                капітального оновлення приміщень. Наша місія — робити житло зручним і
+                красивим, з мінімальними стресами для власника.
+            </p>
+            <div id="about-grid" class="flex"></div>
+        </section>
+        <section id="services" class="flex flex-col flex-center">
+            <h2>Послуги</h2>
+            <p class="slogan">
+                Перелік основних послуг (повний перелік можна уточнити при замовленні)
+            </p>
+            <div id="services-list"></div>
+        </section>
+        <section class="portfolio-reviews flex">
+            <div id="portfolio" class="section-card flex flex-col flex-center">
+                <h2>Портфоліо</h2>
+                <p class="slogan">
+                    Пара прикладів робіт «до/після». Опис вказує вид робіт і термін
+                    виконання.
+                </p>
+                <div class="slider">
+                    <div class="slides" id="slides"></div>
+
+                    <div class="slider-controls">
+                        <button class="small-btn" id="prevBtn">◀</button>
+                        <button class="small-btn" id="nextBtn">▶</button>
+                    </div>
+                </div>
+            </div>
+            <div id="reviews" class="section-card flex flex-col flex-center">
+                <h2>Відгуки</h2>
+                <p class="slogan">Реальні відгуки наших клієнтів</p>
+                <div class="slider reviews-slider">
+                    <div class="slides" id="reviews-track"></div>
+                    <div class="slider-controls">
+                        <button class="small-btn" id="prevReview">◀</button>
+                        <button class="small-btn" id="nextReview">▶</button>
+                    </div>
+                </div>
+                <button class="btn" onclick="openModal('feedbackModal')">
+                    Залишити відгук
+                </button>
+            </div>
+        </section>
+        <section id="contacts" class="flex flex-col flex-center">
+            <h2>Контакти</h2>
+            <p class="slogan">Телефон, форма зворотного зв'язку та карта</p>
+            <div class="contacts-content flex">
+                <form id="contactForm" class="contact-card flex flex-col" action="https://formspree.io/f/{your-id}"
+                    method="POST" onsubmit="return validateAndSend(event);">
+                    <h3>Зв'язатися з нами</h3>
+                    <input type="text" id="name" name="name" required placeholder="Ім'я" />
+                    <input type="tel" id="phone" name="phone" required placeholder="+380XXXXXXXXX"
+                        pattern="^\+?[\d\s\-()]{7,}$" />
+                    <textarea id="message" name="message" rows="4" placeholder="Коротко опишіть завдання"></textarea>
+                    <input type="hidden" name="_subject" value="Нове звернення з сайту Рембуд" />
+                    <div class="contact-actions flex">
+                        <button class="btn" type="submit">Відправити</button>
+                        <button class="ghost big">Email</button>
+                    </div>
+                    <p id="formMsg" class="slogan"></p>
+                </form>
+                <div class="contact-card map-section">
+                    <h3>Карта</h3>
+                    <div class="map-placeholder flex flex-center">
+                        <small class="slogan"> Тут буде карта Google Maps </small>
+                    </div>
+                    <div class="contact-actions flex">
+                        <a class="btn" href="https://t.me/your_telegram" target="_blank">
+                            Telegram
+                        </a>
+                        <a class="btn" href="https://wa.me/380XXXXXXXXX" target="_blank">
+                            Viber
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <div id="footer"></div>
-    <div id="modals"></div>
-    <script>
-        async function loadComponent(id, file) {
-            document.getElementById(id).innerHTML = await (await fetch(`components/${file}`)).text();
-        }
-        const components = ['header', 'hero', 'about'/*, 'services', 'portfolio', 'reviews', 'contacts', 'footer', */, 'modals']
-        components.forEach(c => loadComponent(c, `${c}.html`))
-    </script>
+    <footer class="footer flex flex-col">
+        <div class="footer-top flex flex-between">
+            <h2>Рембуд</h2>
+            <p class="text-white">Преміальний ремонт квартир та будинків</p>
+        </div>
+        <div class="footer-content flex flex-around">
+            <div class="footer-column flex flex-center">
+                <a href="tel:+380XXXXXXXXX" class="text-white transition">
+                    📞 +380 ХХ ХХХ ХХХХ</a>
+                <p class="text-white">📍 Київ, Україна</p>
+                <button class="btn big">Викликати майстра</button>
+            </div>
+
+            <nav class="footer-column flex flex-center">
+                <a href="#home" class="text-white transition">Головна</a>
+                <a href="#about" class="text-white transition">Про нас</a>
+                <a href="#services" class="text-white transition">Послуги</a>
+            </nav>
+
+            <nav class="footer-column flex flex-center">
+                <a href="#portfolio" class="text-white transition">Портфоліо</a>
+                <a href="#reviews" class="text-white transition">Відгуки</a>
+                <a href="#contacts" class="text-white transition">Контакти</a>
+            </nav>
+
+            <div class="footer-column flex flex-center">
+                <a href="#" class="social-link transition">🌐 Facebook</a>
+                <a href="#" class="social-link transition">📸 Instagram</a>
+                <a href="#" class="social-link transition">✈️ Telegram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Рембуд. Всі права захищені.</div>
+    </footer>
+    <div id="modalBackdrop" class="modal-backdrop flex flex-center" role="dialog" aria-modal="true" aria-hidden="true"
+        onclick="closeAllModals(event)">
+        <div class="modal" id="orderModal" role="document" aria-labelledby="orderTitle">
+            <h3 id="orderTitle">Замовити майстра</h3>
+            <form class="flex flex-col" onsubmit="return submitModalForm(event);">
+                <label for="mname">Ім'я *</label>
+                <input id="mname" required />
+                <label for="mphone">Телефон *</label>
+                <input id="mphone" required pattern="^\+?[\d\s\-()]{7,}$" />
+                <label for="mnotes">Коротко про роботу</label>
+                <textarea id="mnotes" rows="3"></textarea>
+                <div class="modal-actions flex">
+                    <button class="btn" type="submit">Надіслати</button>
+                    <button type="button" class="ghost big" onclick="closeModal('orderModal')">
+                        Скасувати
+                    </button>
+                </div>
+                <p id="modalMsg" class="slogan"></p>
+            </form>
+        </div>
+        <div class="modal" id="priceModal" role="document" aria-labelledby="priceTitle">
+            <h3 id="priceTitle">Дізнатися ціну</h3>
+            <p class="slogan">
+                Вкажіть коротко: тип робіт та площа — наш менеджер зв'яжеться для
+                точної оцінки.
+            </p>
+            <form class="flex flex-col" onsubmit="return submitPriceForm(event);">
+                <label for="ptype">Тип робіт</label>
+                <select id="ptype">
+                    <option>Ремонт санвузла</option>
+                    <option>Косметичний ремонт</option>
+                    <option>Капітальний ремонт</option>
+                    <option>Укладання плитки</option>
+                </select>
+                <label for="psize">Площа (м²)</label>
+                <input id="psize" type="number" min="1" placeholder="Наприклад, 20" />
+
+                <div class="modal-actions flex">
+                    <button class="btn" type="submit">Відправити</button>
+                    <button type="button" class="ghost big" onclick="closeModal('priceModal')">
+                        Закрити
+                    </button>
+                </div>
+                <p id="priceMsg" class="slogan"></p>
+            </form>
+        </div>
+        <div class="modal" id="feedbackModal" role="document" aria-labelledby="feedbackTitle">
+            <h3 id="feedbackTitle">Залишити відгук</h3>
+            <form class="flex flex-col" onsubmit="return submitFeedback(event);">
+                <label for="fname">Ім'я</label>
+                <input id="fname" required />
+                <label for="ftext">Відгук</label>
+                <textarea id="ftext" rows="4" required></textarea>
+                <div class="modal-actions flex">
+                    <button class="btn" type="submit">Надіслати</button>
+                    <button type="button" class="ghost big" onclick="closeModal('feedbackModal')">
+                        Скасувати
+                    </button>
+                </div>
+                <p id="fmsg" class="slogan"></p>
+            </form>
+        </div>
+    </div>
     <script src="./src/script.js"></script>
     <script src="./src/header.js"></script>
-
+    <script src="./src/data.js"></script>
+    <script src="./src/portfolio.js"></script>
+    <script src="./src/reviews.js"></script>
+    <script src="./src/footer.js"></script>
+    <script>
+        loadComponent();
+    </script>
 </body>
 
 </html>

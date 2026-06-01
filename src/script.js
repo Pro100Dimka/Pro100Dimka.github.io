@@ -1,28 +1,40 @@
-// ===============================
-// Basic UI + Slider + Forms JS
-// ===============================
-document.getElementById("year").textContent = new Date().getFullYear();
+if (document.getElementById("year")?.textContent)
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-// MODAL helpers
 function openModal(id) {
-  document.getElementById("modalBackdrop").style.display = "flex";
-  document.getElementById("modalBackdrop").setAttribute("aria-hidden", "false");
-  const mod = document.getElementById(id);
-  mod.style.display = "block";
-  // hide others
-  Array.from(document.querySelectorAll(".modal")).forEach((m) => {
-    if (m.id !== id) m.style.display = "none";
+  const backdrop = document.getElementById("modalBackdrop");
+  const modal = document.getElementById(id);
+
+  backdrop.classList.add("active");
+  backdrop.setAttribute("aria-hidden", "false");
+
+  document.querySelectorAll(".modal").forEach((m) => {
+    m.classList.remove("active");
   });
+
+  modal.classList.add("active");
 }
+
 function closeModal(id) {
-  const mod = document.getElementById(id);
-  if (mod) mod.style.display = "none";
-  // if no modals open, hide backdrop
-  const anyOpen = Array.from(document.querySelectorAll(".modal")).some(
-    (m) => m.style.display === "block"
-  );
+  const backdrop = document.getElementById("modalBackdrop");
+  const modal = document.getElementById(id);
+
+  modal.classList.remove("active");
+
+  const anyOpen = document.querySelectorAll(".modal.active").length > 0;
+
   if (!anyOpen) {
-    document.getElementById("modalBackdrop").style.display = "none";
+    backdrop.classList.remove("active");
+    backdrop.setAttribute("aria-hidden", "true");
+  }
+}
+
+function closeAllModals(e) {
+  if (e.target.id === "modalBackdrop") {
+    document
+      .querySelectorAll(".modal")
+      .forEach((m) => m.classList.remove("active"));
+    document.getElementById("modalBackdrop").classList.remove("active");
     document
       .getElementById("modalBackdrop")
       .setAttribute("aria-hidden", "true");
@@ -32,7 +44,7 @@ function closeAllModals(e) {
   // close only if clicked backdrop, not modal content
   if (e.target === document.getElementById("modalBackdrop")) {
     Array.from(document.querySelectorAll(".modal")).forEach(
-      (m) => (m.style.display = "none")
+      (m) => (m.style.display = "none"),
     );
     document.getElementById("modalBackdrop").style.display = "none";
     document
@@ -40,24 +52,6 @@ function closeAllModals(e) {
       .setAttribute("aria-hidden", "true");
   }
 }
-
-// SLIDER
-let current = 0;
-const slides = document.getElementById("slides");
-const totalSlides = slides.children.length;
-function updateSlider() {
-  slides.style.transform = "translateX(" + -current * 100 + "%)";
-}
-function nextSlide() {
-  current = (current + 1) % totalSlides;
-  updateSlider();
-}
-function prevSlide() {
-  current = (current - 1 + totalSlides) % totalSlides;
-  updateSlider();
-}
-// simple auto-advance (optional)
-let sliderTimer = setInterval(nextSlide, 8000);
 
 // FORM VALIDATION & SUBMISSION hooks
 function validateAndSend(e) {
@@ -73,7 +67,7 @@ function validateAndSend(e) {
   // If using fetch/ajax: you can send with fetch to Formspree endpoint.
   showFormMsg(
     "formMsg",
-    "Дякуємо! Ваше повідомлення відправлено (або буде відправлено після налаштування Formspree)."
+    "Дякуємо! Ваше повідомлення відправлено (або буде відправлено після налаштування Formspree).",
   );
   // For demo: clear form
   form.reset();
@@ -128,14 +122,36 @@ function submitFeedback(e) {
   }, 1200);
   return false;
 }
+function renderCards(data, id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = data
+    .map(
+      (s, i) => `<div class="hs-item fade-up flex" style="--d: ${i * 150}ms">
+            ${s.ico ? `<div class="hs-ico">${s.ico}</div>` : ""}
+                <div class="flex flex-col">
+                    <h4>${s.title}</h4>
+                    <p class="slogan">${s.description}</p>
+                </div>
+            </div>`,
+    )
+    .join("");
+}
 
-// Optional: stop auto slider on interaction
-document
-  .querySelector(".slider")
-  .addEventListener("mouseover", () => clearInterval(sliderTimer));
-document
-  .querySelector(".slider")
-  .addEventListener(
-    "mouseleave",
-    () => (sliderTimer = setInterval(nextSlide, 8000))
+async function loadComponent() {
+  const burgerCheckbox = document.getElementById("burger-checkbox");
+  renderNavLinks();
+  navContentBack();
+  mobileMenuToggle();
+  renderCards(aboutUsProps, "about-grid");
+  renderCards(
+    services.map((el) => ({ ...el, ico: "" })),
+    "services-list",
   );
+  renderCards(
+    services.filter((el) => el.ico),
+    "hero-services",
+  );
+  initPortfolioSlider();
+  initReviewsSlider();
+}
