@@ -28,7 +28,6 @@
 </head>
 
 <body>
-    <div id="overlay"></div>
     <header class="header flex flex-center">
         <div class="header-nav flex flex-between flex-center">
             <div class="brand flex flex-center fadeInLeft">
@@ -53,6 +52,8 @@
             </nav>
         </div>
     </header>
+    <div id="overlay"></div>
+
     <main id="home" class="flex flex-col flex-center">
         <section class="hero flex flex-center">
             <div class="hero-bg"></div>
@@ -173,40 +174,40 @@
                 </div>
             </div>
         </section>
+        <footer class="footer flex flex-col">
+            <div class="footer-top flex flex-between">
+                <h2>Рембуд</h2>
+                <p class="text-white">Преміальний ремонт квартир та будинків</p>
+            </div>
+            <div class="footer-content flex flex-around">
+                <div class="footer-column flex flex-center">
+                    <a href="tel:+380XXXXXXXXX" class="text-white transition">
+                        📞 +380 ХХ ХХХ ХХХХ</a>
+                    <p class="text-white">📍 Київ, Україна</p>
+                    <button class="btn big">Викликати майстра</button>
+                </div>
+
+                <nav class="footer-column flex flex-center">
+                    <a href="#home" class="text-white transition">Головна</a>
+                    <a href="#about" class="text-white transition">Про нас</a>
+                    <a href="#services" class="text-white transition">Послуги</a>
+                </nav>
+
+                <nav class="footer-column flex flex-center">
+                    <a href="#portfolio" class="text-white transition">Портфоліо</a>
+                    <a href="#reviews" class="text-white transition">Відгуки</a>
+                    <a href="#contacts" class="text-white transition">Контакти</a>
+                </nav>
+
+                <div class="footer-column flex flex-center">
+                    <a href="#" class="social-link transition">🌐 Facebook</a>
+                    <a href="#" class="social-link transition">📸 Instagram</a>
+                    <a href="#" class="social-link transition">✈️ Telegram</a>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2026 Рембуд. Всі права захищені.</div>
+        </footer>
     </main>
-    <footer class="footer flex flex-col">
-        <div class="footer-top flex flex-between">
-            <h2>Рембуд</h2>
-            <p class="text-white">Преміальний ремонт квартир та будинків</p>
-        </div>
-        <div class="footer-content flex flex-around">
-            <div class="footer-column flex flex-center">
-                <a href="tel:+380XXXXXXXXX" class="text-white transition">
-                    📞 +380 ХХ ХХХ ХХХХ</a>
-                <p class="text-white">📍 Київ, Україна</p>
-                <button class="btn big">Викликати майстра</button>
-            </div>
-
-            <nav class="footer-column flex flex-center">
-                <a href="#home" class="text-white transition">Головна</a>
-                <a href="#about" class="text-white transition">Про нас</a>
-                <a href="#services" class="text-white transition">Послуги</a>
-            </nav>
-
-            <nav class="footer-column flex flex-center">
-                <a href="#portfolio" class="text-white transition">Портфоліо</a>
-                <a href="#reviews" class="text-white transition">Відгуки</a>
-                <a href="#contacts" class="text-white transition">Контакти</a>
-            </nav>
-
-            <div class="footer-column flex flex-center">
-                <a href="#" class="social-link transition">🌐 Facebook</a>
-                <a href="#" class="social-link transition">📸 Instagram</a>
-                <a href="#" class="social-link transition">✈️ Telegram</a>
-            </div>
-        </div>
-        <div class="footer-bottom">© 2026 Рембуд. Всі права захищені.</div>
-    </footer>
     <div id="modalBackdrop" class="modal-backdrop flex flex-center" role="dialog" aria-modal="true" aria-hidden="true"
         onclick="closeAllModals(event)">
         <div class="modal" id="orderModal" role="document" aria-labelledby="orderTitle">
