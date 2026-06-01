@@ -1,7 +1,7 @@
 let currentSlide = 0;
 let slides;
 let totalSlides;
-const visibleSlides = 3;
+const visibleSlides = document.documentElement.clientWidth < 768 ? 1 : 3;
 
 function initPortfolioSlider() {
   renderSlides();

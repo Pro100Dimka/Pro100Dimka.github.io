@@ -2,6 +2,7 @@ const services = [
   {
     ico: "D",
     title: "Демонтаж",
+    img: "../img/dismantling.jpg",
     description: "Зняття покриттів, підготовка під чистові роботи",
   },
   {
@@ -18,10 +19,23 @@ const services = [
     ico: "T",
     title: "Штукатурка / шпаклівка",
     description: "Вирівнювання стін і стель",
+    img: "../img/plaster.jpg",
   },
-  { title: "Стяжка підлоги", description: "Чіткі рівні підлоги під покриття" },
-  { title: "Укладання плитки", description: "Гарантована акуратність і шви" },
-  { title: "Ламінат / паркет", description: "Підготовка основи, укладання" },
+  {
+    title: "Стяжка підлоги",
+    description: "Чіткі рівні підлоги під покриття",
+    img: "../img/screed.jpg",
+  },
+  {
+    title: "Укладання плитки",
+    description: "Гарантована акуратність і шви",
+    img: "../img/ukladkaPlitky.jpg",
+  },
+  {
+    title: "Ламінат / паркет",
+    description: "Підготовка основи, укладання",
+    img: "../img/laminat.jpg",
+  },
   { title: "Фарбування", description: "Підбір фарб, фарбування з гарантією" },
   {
     title: "Встановлення міжкімнатних дверей",
@@ -31,6 +45,7 @@ const services = [
   {
     title: "Косметичний та капітальний ремонт",
     description: "Від часткового до повного ремонту",
+    img: "../img/cosmetic.jpg",
   },
 ];
 
@@ -52,26 +67,26 @@ const aboutUsProps = [
 const portfolioData = [
   {
     img: "../img/bathroom.jpg",
-    alt: "Приклад 1",
+    alt: "Ремонт ванни",
+    text: "Ремонт ванни — 10 днів",
+  },
+  {
+    img: "../img/santeh.jpg",
+    alt: "Ремонт санвузла",
     text: "Ремонт санвузла — 10 днів",
   },
   {
-    img: "../img/kitchen.jpg",
-    alt: "Приклад 2",
-    text: "Укладання плитки — 5 днів",
+    img: "../img/plitka.jpg",
+    alt: "Укладання плитки",
+    text: "Укладання плитки — 10 днів",
   },
   {
-    img: "../img/room.jpg",
+    img: "../img/bathroom.jpg",
     alt: "Приклад 3",
     text: "Косметичний ремонт кімнати",
   },
   {
-    img: "../img/balcony.jpg",
-    alt: "Приклад 4",
-    text: "Балкон під ключ",
-  },
-  {
-    img: "../img/balcony.jpg",
+    img: "../img/plitka.jpg",
     alt: "Приклад 4",
     text: "Балкон під ключ",
   },

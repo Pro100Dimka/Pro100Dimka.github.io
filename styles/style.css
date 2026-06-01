@@ -22,9 +22,9 @@
     --space-5: clamp(28px, 4vw, 48px);
     --h2: clamp(28px, 3.2vw, 42px);
     --h3: clamp(20px, 2.4vw, 28px);
-    --h4: clamp(18px, 2.1vw, 24px);
-    --text-base: clamp(14px, 1.2vw, 16px);
-    --text-small: clamp(12px, 1.05vw, 14px);
+    --h4: clamp(20px, 2.4vw, 28px);
+    --text-base: clamp(19px, 1.8vw, 22px);
+    --text-small: clamp( 17px, 1.6vw, 20px);
     --header-h: 64px;
 }
 * {
@@ -157,6 +157,10 @@ h4 {
     transition: transform .3s ease, background .3s ease;
     background: rgba(255, 255, 255, .08);
     border-color: rgba(255, 255, 255, .12);
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
 .hs-item:hover {
     transform: translateY(-4px);
@@ -167,7 +171,7 @@ h4 {
 }
 .slogan {
     opacity: .8;
-    font-size: var(--text-small);
+    font-size: var(--text-base);
     color: rgba(255, 255, 255, .8);
 }
 .hs-ico {
@@ -542,7 +546,7 @@ h4 {
     animation: fadeContent 1s ease-out both;
 }
 .hero-title {
-    font-size: clamp(28px, 4.2vw, 44px);
+    font-size: clamp(30px, 4.5vw, 50px);
     line-height: 1.15;
     font-weight: 800;
     margin-bottom: 18px;
@@ -552,7 +556,7 @@ h4 {
     text-shadow: 0 6px 25px rgba(247, 183, 51, .4);
 }
 .hero-subtitle {
-    font-size: clamp(15px, 1.8vw, 19px);
+    font-size: clamp(18px, 2.5vw, 24px);
     color: #cbd5e1;
     margin: 0 auto var(--space-4);
     max-width: 62ch;
@@ -582,7 +586,7 @@ h4 {
     place-items: center;
 }
 #hero-services {
-    flex: 1.4;
+    flex: 1.2;
     gap: 1.4rem;
     flex-wrap: wrap;
     justify-content: center;
@@ -601,7 +605,7 @@ h4 {
     width: min(100% - (var(--gutter) * 2), var(--container));
     margin-inline: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
     gap: var(--space-2);
     color: var(--white);
 }
@@ -641,6 +645,7 @@ h4 {
 }
 #reviews {
     flex: 1 1 320px;
+    padding: 1rem;
     min-width: 0;
 }
 .slider {
@@ -674,6 +679,9 @@ h4 {
 }
 .review-card {
     padding: 1rem;
+    border-color: transparent;
+    pointer-events: none;
+    background:unset;
 }
 .slider-controls {
     position: absolute;

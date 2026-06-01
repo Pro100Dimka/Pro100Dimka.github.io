@@ -125,16 +125,24 @@ function submitFeedback(e) {
 function renderCards(data, id) {
   const el = document.getElementById(id);
   if (!el) return;
+
   el.innerHTML = data
-    .map(
-      (s, i) => `<div class="hs-item fade-up flex" style="--d: ${i * 150}ms">
-            ${s.ico ? `<div class="hs-ico">${s.ico}</div>` : ""}
-                <div class="flex flex-col">
-                    <h4>${s.title}</h4>
-                    <p class="slogan">${s.description}</p>
-                </div>
-            </div>`,
-    )
+    .map((s, i) => {
+      const bg = s.img ? `background-image: url('${s.img}');` : "";
+      return `
+        <div class="hs-item fade-up flex"
+             style="--d:${i * 150}ms; ${bg}">
+          
+          ${s.ico ? `<div class="hs-ico">${s.ico}</div>` : ""}
+
+          <div class="flex flex-col">
+            <h4>${s.title}</h4>
+            <p class="slogan">${s.description}</p>
+          </div>
+
+        </div>
+      `;
+    })
     .join("");
 }
 
